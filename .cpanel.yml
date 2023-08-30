@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/n1662513/public_html/discv2
+    - /bin/cp index.php $DEPLOYPATH
+    - /bin/cp result.php $DEPLOYPATH
