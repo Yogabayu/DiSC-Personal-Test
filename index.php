@@ -30,6 +30,8 @@ foreach ($x as $dt) {
     <meta http-equiv="cache-control" content="no-cache" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel='stylesheet' href='css/disc.css' />
   </head>
 
@@ -87,7 +89,7 @@ foreach ($x as $dt) {
                   <td" . ($j == 0 ? " class='first'" : "") . ">
                   <input type='radio' 
                          name='l[" . ($i + $n * 8) . "]' 
-                         value='{$data[$no]->least}' 
+                         value='{$data[$no]->least}'
                           required/>"
                     . "</td>";
                 }
@@ -96,13 +98,6 @@ foreach ($x as $dt) {
             }
             ?>
           </tbody>
-          <!-- <tfoot>
-            <tr>
-              <th colspan='3'>
-                <input type='submit' value='proses' class='btn' />
-              </th>
-            </tr>
-          </tfoot> -->
         </table>
         <p class="text-center">
           <button style="background-color: blue;" id="submit" class="btn btn-primary btn-lg">
@@ -111,6 +106,27 @@ foreach ($x as $dt) {
         </p>
       </form>
     </div>
+    <script>
+      $(document).ready(function () {
+        $('input[type="radio"]').on('change', function () {
+          // Dapatkan baris (tr) yang berisi input yang diubah
+          var row = $(this).closest('tr');
+
+          // Dapatkan input radio 'P' dan 'K' dari baris tersebut
+          var radioP = row.find('input[name^="m"]');
+          var radioK = row.find('input[name^="l"]');
+
+          // Periksa apakah 'P' dan 'K' terpilih pada baris ini
+          if (radioP.is(':checked') && radioK.is(':checked')) {
+            alert("Anda telah memilih 'P' dan 'K' pada baris ini. Harap pilih hanya salah satu.");
+            // Uncheck kedua input radio
+            radioP.prop('checked', false);
+            radioK.prop('checked', false);
+          }
+        });
+      });
+    </script>
+
   </body>
 
   </html>

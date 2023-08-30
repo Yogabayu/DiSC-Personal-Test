@@ -1,7 +1,7 @@
 -- structure only, no dump data for free version
 
-CREATE DATABASE IF NOT EXISTS disc;
-USE disc;
+-- CREATE DATABASE IF NOT EXISTS disc;
+-- USE disc;
 
 DROP TABLE IF EXISTS tbl_personalities;
 CREATE TABLE IF NOT EXISTS tbl_personalities (
