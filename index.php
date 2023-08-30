@@ -37,7 +37,7 @@ foreach ($x as $dt) {
 
   <body>
     <header>
-      <h1>:: DISC Personality Test</h1>
+      <h1>:: DISC Personality Test v2</h1>
     </header>
     <div id='container'>
       <div class='info-box'>
