@@ -109,17 +109,12 @@ foreach ($x as $dt) {
     <script>
       $(document).ready(function () {
         $('input[type="radio"]').on('change', function () {
-          // Dapatkan baris (tr) yang berisi input yang diubah
           var row = $(this).closest('tr');
 
-          // Dapatkan input radio 'P' dan 'K' dari baris tersebut
           var radioP = row.find('input[name^="m"]');
           var radioK = row.find('input[name^="l"]');
-
-          // Periksa apakah 'P' dan 'K' terpilih pada baris ini
           if (radioP.is(':checked') && radioK.is(':checked')) {
             alert("Anda telah memilih 'P' dan 'K' pada baris ini. Harap pilih hanya salah satu.");
-            // Uncheck kedua input radio
             radioP.prop('checked', false);
             radioK.prop('checked', false);
           }
