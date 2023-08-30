@@ -29,15 +29,6 @@ DISC merupakan model perilaku yang membantu setiap manusia memahami“mengapa se
 + MorrisJS (http://morrisjs.github.io/morris.js/index.html), 
 + RaphaelJS (http://raphaeljs.com/)
 
-## Donasi
-- untuk donasi via transfer 
-    - Bank Syariah Indonesia (BSI) 821-342-5550
-    - Bank Sinarmas (153) 005 462 4719
-    - Bank BCA Digital (Blu) (501) 000 576 776 186
-- untuk donasi via PayPal [https://paypal.me/cahyadwiana]
-
-## Contact
-+ facebook (https://m.facebook.com/cahya.dsn)
-+ email (cahyadsn@gmail.com)
-+ demo site    : (http://psycho.cahyadsn.com/disc_id) 
-+ source code  : (https://github.com/cahyadsn/disc_id)
+## Authors
++ V1  : (https://github.com/cahyadsn/disc_id)
++ V2  : (https://github.com/Yogabayu/DiSC-Personal-Test)
