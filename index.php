@@ -41,14 +41,19 @@ foreach ($x as $dt) {
     </header>
     <div id='container'>
       <div class='info-box'>
-        <b>INSTRUKSI</b> : Setiap nomor di bawah ini memuat 4 (empat) kalimat. Tugas anda adalah : <br />
-        <ol>
-          <li>Beri tanda/cek pada kolom di bawah huruf [P] di samping kalimat yang PALING menggambarkan diri anda</li>
-          <li>Beri tanda/cek pada kolom di bawah huruf [K] di samping kalimat yang PALING TIDAK menggambarkan diri anda
-          </li>
-        </ol>
+        <h4>
+          <b>INSTRUKSI</b> : Setiap nomor di bawah ini memuat 4 (empat) kalimat. Tugas anda adalah : <br />
+          <ol>
+            <li>Beri tanda/cek pada kolom di bawah huruf [P] di samping kalimat yang PALING menggambarkan diri anda</li>
+            <li>Beri tanda/cek pada kolom di bawah huruf [K] di samping kalimat yang PALING TIDAK menggambarkan diri
+              anda
+            </li>
+          </ol>
+        </h4>
         <br />
-        <b>PERHATIKAN</b> : Setiap nomor hanya ada 1 (satu) tanda/cek di bawah masing-masing kolom P dan K.<br />
+        <h5 style="color: red;">
+          <b>PERHATIKAN</b> : Setiap nomor hanya ada 1 (satu) tanda/cek di bawah masing-masing kolom P dan K.
+        </h5>
       </div>
       <form method='post' action='result.php'>
         <table class="table table-borderless">
@@ -68,35 +73,34 @@ foreach ($x as $dt) {
               echo "<tr" . ($i % 2 == 0 ? " class='dark'" : "") . ">";
               for ($j = 0; $j < 4; ++$j) {
                 for ($n = 0; $n < 3; $n++) {
-                  if ($j > 0 && $n == 0) {
-                    echo "<tr" . ($i % 2 == 0 ? " class='dark'" : "") . ">";
+                  if ($j > 0 && $n == 0) {           
+                    echo "<tr" . ($i % 2 == 0 ? " class='dark' " : "") . ">";
                   } elseif ($j == 0) {
-                    echo "<th rowspan='4'"
-                      . ($j == 0 ? " class='first'" : "") . ">"
-                      . ($i + $n * 8 + 1)
-                      . "</th>";
+                    $id = $i + $n * 8 + 1;
+                    echo "<th rowspan='4'" . ($j == 0 ? " class='first header-cell' data-id='$id'" : "") . ">$id</th>";
                   }
                   $no = $n * 8 + $i * 4 + $j + (24 * $n);
                   echo "<td" . ($j == 0 ? " class='first'" : "") . ">
-                  {$data[$no]->term}
-                  </td>
-                  <td" . ($j == 0 ? " class='first'" : "") . ">
-                <input type='radio' 
-                       name='m[" . ($i + $n * 8) . "]' 
-                     value='{$data[$no]->most}' 
-                      required />"
-                    . "</td>
-                  <td" . ($j == 0 ? " class='first'" : "") . ">
-                  <input type='radio' 
-                         name='l[" . ($i + $n * 8) . "]' 
-                         value='{$data[$no]->least}'
-                          required/>"
-                    . "</td>";
+                    {$data[$no]->term}
+                    </td>
+                    <td" . ($j == 0 ? " class='first'" : "") . ">
+                    <input type='radio' 
+                          name='m[" . ($i + $n * 8) . "]' 
+                          value='{$data[$no]->most}' 
+                          required />
+                    </td>
+                    <td" . ($j == 0 ? " class='first'" : "") . ">
+                    <input type='radio' 
+                          name='l[" . ($i + $n * 8) . "]' 
+                          value='{$data[$no]->least}'
+                          required/>
+                    </td>";
                 }
                 echo "</tr>";
               }
             }
             ?>
+
           </tbody>
         </table>
         <p class="text-center">
@@ -106,13 +110,15 @@ foreach ($x as $dt) {
         </p>
       </form>
     </div>
-    <script>
+    <!-- <script>
       $(document).ready(function () {
         $('input[type="radio"]').on('change', function () {
           var row = $(this).closest('tr');
+          var rowIndex = row.index();
 
-          var radioP = row.find('input[name^="m"]');
-          var radioK = row.find('input[name^="l"]');
+          var radioP = $('input[name="m[' + rowIndex + ']"]');
+          var radioK = $('input[name="l[' + rowIndex + ']"]');
+
           if (radioP.is(':checked') && radioK.is(':checked')) {
             alert("Anda telah memilih 'P' dan 'K' pada baris ini. Harap pilih hanya salah satu.");
             radioP.prop('checked', false);
@@ -120,7 +126,7 @@ foreach ($x as $dt) {
           }
         });
       });
-    </script>
+    </script> -->
 
   </body>
 

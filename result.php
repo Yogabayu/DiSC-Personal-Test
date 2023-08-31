@@ -3,6 +3,16 @@ if (isset($_POST['m']) && isset($_POST['l'])) {
   include 'inc/db.php';
   $most = array_count_values($_POST['m']);
   $least = array_count_values($_POST['l']);
+  $hasilM = $_POST['m'];
+  $hasilL = $_POST['l'];
+   $jsonResult = array(
+    'm' => $most,
+    'l' => $least,
+  );
+
+  header('Content-Type: application/json');
+  echo json_encode($jsonResult); 
+
   $result = array();
   $aspect = array('D', 'I', 'S', 'C', 'N');
   foreach ($aspect as $a) {
