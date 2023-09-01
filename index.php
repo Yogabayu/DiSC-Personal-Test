@@ -19,6 +19,14 @@ foreach ($x as $dt) {
     $data[] = $d;
   }
 }
+
+// $jsonResult = array(
+//   'data' => $data,
+// );
+
+// header('Content-Type: application/json');
+// echo json_encode($jsonResult);
+
 ?>
 <doctype html>
   <html>
@@ -73,7 +81,7 @@ foreach ($x as $dt) {
               echo "<tr" . ($i % 2 == 0 ? " class='dark'" : "") . ">";
               for ($j = 0; $j < 4; ++$j) {
                 for ($n = 0; $n < 3; $n++) {
-                  if ($j > 0 && $n == 0) {           
+                  if ($j > 0 && $n == 0) {
                     echo "<tr" . ($i % 2 == 0 ? " class='dark' " : "") . ">";
                   } elseif ($j == 0) {
                     $id = $i + $n * 8 + 1;

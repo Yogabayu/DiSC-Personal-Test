@@ -3,15 +3,14 @@ if (isset($_POST['m']) && isset($_POST['l'])) {
   include 'inc/db.php';
   $most = array_count_values($_POST['m']);
   $least = array_count_values($_POST['l']);
-  $hasilM = $_POST['m'];
-  $hasilL = $_POST['l'];
-   $jsonResult = array(
-    'm' => $most,
-    'l' => $least,
-  );
 
-  header('Content-Type: application/json');
-  echo json_encode($jsonResult); 
+/** $jsonResult = array(
+   'm' => $_POST['m'],
+   'l' => $_POST['l']
+ );
+
+ header('Content-Type: application/json');
+ echo json_encode($jsonResult); */
 
   $result = array();
   $aspect = array('D', 'I', 'S', 'C', 'N');
@@ -45,6 +44,7 @@ if (isset($_POST['m']) && isset($_POST['l'])) {
     $I = $disc->i;
     $S = $disc->s;
     $C = $disc->c;
+
     if ($D <= 0 && $I <= 0 && $S <= 0 && $C > 0) $pattern = 1;
     elseif ($D > 0 && $I <= 0 && $S <= 0 && $C <= 0) $pattern = 2;
     elseif ($D > 0 && $I <= 0 && $S <= 0 && $C > 0 && $C >= $D) $pattern = 3;
@@ -86,6 +86,7 @@ if (isset($_POST['m']) && isset($_POST['l'])) {
     elseif ($D > 0 && $I > 0 && $S <= 0 && $C > 0 && $C >= $I && $I >= $D) $pattern = 39;
     elseif ($D > 0 && $I <= 0 && $S > 0 && $C > 0 && $C >= $S && $S >= $D) $pattern = 40;
     else $pattern = 0;
+
     $sql = "SELECT * FROM tbl_patterns WHERE id={$pattern}";
     $result = $db->query($sql);
     $data = $result->fetch_object();
@@ -95,6 +96,8 @@ if (isset($_POST['m']) && isset($_POST['l'])) {
   $line1 = getPattern($db, $result, 1);
   $line2 = getPattern($db, $result, 2);
   $line3 = getPattern($db, $result, 3);
+
+
 ?>
 <doctype html>
   <html>
